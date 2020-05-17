@@ -1,0 +1,94 @@
+
+    /*
+    public ArrayList<Rating> getSimilarRatings(String raterID, int numSimilarRaters, int minimalRaters){
+                
+        ArrayList<Rating> updateList = new ArrayList<Rating>();
+        // this list is to be returned 
+        // This method should return an ArrayList of type Rating, 
+        // of *movies and their *weighted average ratings
+            
+        ArrayList<String> mList = new ArrayList<>();
+            ArrayList<Rating> list = getSimilarities(raterID);
+            for (int i = 0; i < numSimilarRaters; i++) {
+            String raterID1 = list.get(i).getItem();
+            ArrayList<Rating> movieRated1 = RaterDatabase.getRater(raterID1).getRatings();
+            for (Rating rt : movieRated1) {
+                if (!mList.contains(rt.getItem())) {
+                    mList.add(rt.getItem());
+                    //System.out.println("Movie id = " + movieID + " Rater id = " + raterID1);
+                }
+            }
+        }
+        
+        for(String currM: MovieDatabase.filterBy(new TrueFilter())){
+            // calculate a weighted average movie rating
+            Double sum=0.0; int count=0; int smt=0; int c=0;
+            for(int k=0; k<numSimilarRaters ; k++){
+                Rating r = list.get(k); 
+                String currRaterID = r.getItem();
+                Rater theRater = RaterDatabase.getRater(currRaterID);                
+                Double theRatingGiven = theRater.getRating(currM);
+                
+                
+                Double currRaterWt= r.getValue();
+                if(theRater.hasRating(currM)){
+                // rating obtained for that particular movieID
+                sum = sum + theRatingGiven*currRaterWt;
+                count=count+1;                
+              }
+              c+=1;
+            }          
+            
+            if(count>=minimalRaters){                
+             Rating theMovieWtdRating = new Rating(currM,sum/count);
+             updateList.add(theMovieWtdRating);    
+           }
+        }
+        Collections.sort(updateList);
+        Collections.reverse(updateList);
+        System.out.println(updateList.size());
+        return updateList;
+    }
+    */
+    public ArrayList<Rating> getSimilarRatings(String id, int numSimilarRaters, int minimalRaters){
+        ArrayList<Rating> similarList = getSimilarities(id);
+        HashMap<String,HashMap<String, Double>> myMap= new  HashMap<String,HashMap<String, Double>>();
+        for(int k = 0; k<numSimilarRaters; k++){
+           String currRaterID = similarList.get(k).getItem();
+           Rater currRater = RaterDatabase.getRater(currRaterID);
+           ArrayList<Rating> ratedMovies=currRater.getRatings();
+              for(Rating rt:ratedMovies){
+                  String m = rt.getItem();
+                   if(!myMap.containsKey(m)){
+                       HashMap<String, Double> first = new HashMap<String, Double>();
+                       first.put(currRaterID,currRater.getRating(m));
+                       myMap.put(m,first);
+                    }
+                   else{
+                       myMap.get(m).put(currRaterID,currRater.getRating(m));
+                        
+                    }                
+                }           
+        }
+        ArrayList<Rating> xList = new ArrayList<>(); // to be returned
+            for(String s: myMap.keySet()){
+                HashMap<String, Double> currMap= myMap.get(s);
+                    if(currMap.size()>minimalRaters){
+                        double sum=0.0, count=0.0; 
+                        for(String currRaterID: currMap.keySet()){
+                            double csm= 0.0;
+                            for(Rating r : similarList){
+                                if(r.getItem().equals(currRaterID)){
+                                    csm = r.getValue();
+                                }
+                            } 
+                            sum= sum+ currMap.get(currRaterID)*csm;
+                        }
+                        xList.add(new Rating(s,sum/currMap.size()));
+                    }
+                    Collections.sort(xList,Collections.reverseOrder());
+                    return xList;
+            }
+        
+        return xList;
+    } 
