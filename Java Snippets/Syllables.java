@@ -1,7 +1,29 @@
 
 import java.util.*;
 public class Syllables{
-private int  helperS(String word, String p) {
+	
+	
+	private String text;
+	
+	protected Document(String text)
+	{
+		this.text = text;
+	}
+	
+	protected List<String> getTokens(String pattern)
+	{
+		ArrayList<String> tokens = new ArrayList<String>();
+		Pattern tokSplitter = Pattern.compile(pattern);
+		Matcher m = tokSplitter.matcher(text);
+		
+		while (m.find()) {
+			tokens.add(m.group());
+		}
+		
+		return tokens;
+	}
+	
+	private int  helperS(String word, String p) {
 		ArrayList<String> tokens = new ArrayList<String>();
 		Pattern tokSplitter = Pattern.compile(p);
 		Matcher m = tokSplitter.matcher(word);
