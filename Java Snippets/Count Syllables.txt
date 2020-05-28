@@ -1,0 +1,32 @@
+private int  helperS(String word, String p) {
+		ArrayList<String> tokens = new ArrayList<String>();
+		Pattern tokSplitter = Pattern.compile(p);
+		Matcher m = tokSplitter.matcher(word);
+		
+		while (m.find()) {
+			tokens.add(m.group());
+		}
+		return  tokens.size();
+	}
+	
+	protected int countSyllables(String word)
+	{
+		// TODO: Implement this method so that you can call it from the 
+	    // getNumSyllables method in BasicDocument (module 2) and 
+	    // EfficientDocument (module 3).
+		
+		word=word.toLowerCase();
+		
+		if(word.equals("the")) {
+			return 1;
+		}
+		String pi="[aeiouy]+";
+		int count=0;
+		if(word.charAt(word.length()-1)=='e') {
+			word=word.substring(0,word.length()-1);		 
+		}
+		 count=helperS(word, pi);		 		
+		//System.out.println(tokens.size());		 
+	//	 System.out.println(word +" "  +count);
+		return count;
+	}
