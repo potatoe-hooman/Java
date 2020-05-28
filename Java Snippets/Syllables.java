@@ -1,4 +1,6 @@
 
+import java.util.*;
+public class Syllables{
 private int  helperS(String word, String p) {
 		ArrayList<String> tokens = new ArrayList<String>();
 		Pattern tokSplitter = Pattern.compile(p);
@@ -10,12 +12,21 @@ private int  helperS(String word, String p) {
 		return  tokens.size();
 	}
 	
+	public int getNumSyllables()
+	{
+		List<String> words = getTokens("[a-zA-Z]+");
+		// get all the words
+		int sum=0;
+			for(String word:words) {
+				// for each word
+				sum+=countSyllables(word);			
+				//count syllables and add them up
+			}
+        return sum;
+	}
+	
 	protected int countSyllables(String word)
 	{
-		// TODO: Implement this method so that you can call it from the 
-	    // getNumSyllables method in BasicDocument (module 2) and 
-	    // EfficientDocument (module 3).
-		
 		word=word.toLowerCase();
 		
 		if(word.equals("the")) {
@@ -26,8 +37,7 @@ private int  helperS(String word, String p) {
 		if(word.charAt(word.length()-1)=='e') {
 			word=word.substring(0,word.length()-1);		 
 		}
-		 count=helperS(word, pi);		 		
-		//System.out.println(tokens.size());		 
-	//	 System.out.println(word +" "  +count);
+		 count=helperS(word, pi);		 	
 		return count;
 	}
+}
