@@ -1,0 +1,22 @@
+#BlueJ class context
+comment0.target=allGenes
+comment1.params=dna
+comment1.target=edu.duke.StorageResource\ storeAll(java.lang.String)
+comment1.text=\r\n\ A\ method\ that\ finds\ all\ genes\ in\ a\ dna\ strand\ strarting\ with\ ATG\ coden\ and\ ending\ with\ TAG,\ TGA\r\n\ or\ TAA\ coden.\r\n\r\n\ @param\ dna\ The\ dna\ strand\ to\ search\ for\ genes.\r\n\ @return\ all\ found\ genes\ in\ StorageResource\ datatype.\r\n
+comment2.params=dna\ startIndex
+comment2.target=int\ stopIndex(java.lang.String,\ int)
+comment2.text=\r\n\ A\ method\ that\ indicates\ the\ end\ of\ a\ gene,\ which\ is\ found\ in\ a\ dna.\r\n\r\n\ @param\ dna\ The\ dna\ strand\ to\ search\ for\ gene's\ end.\r\n\ @param\ startIndex\ The\ index\ of\ the\ searching\ start.\r\n\ @return\ The\ index\ of\ end.\r\n
+comment3.params=dna
+comment3.target=float\ cgRatio(java.lang.String)
+comment3.text=\r\n\ A\ method\ that\ calculates\ the\ CG\ ratio.\r\n\r\n\ @param\ dna\ The\ dna\ strand\ to\ search\ for\ genes.\r\n\ @return\ The\ CG\ Ratio.\r\n
+comment4.params=dna
+comment4.target=int\ ctgCounter(java.lang.String)
+comment4.text=\r\n\ A\ method\ that\ calculates\ how\ many\ times\ the\ CTG\ codon\ is\ appeared.\r\n\r\n\ @param\ dna\ The\ dna\ strand\ to\ search\ for\ genes.\r\n\ @return\ The\ Counter.\r\n
+comment5.params=sr
+comment5.target=int\ longestGene(edu.duke.StorageResource)
+comment5.text=\r\n\ A\ method\ that\ find\ the\ length\ of\ longest\ gene.\r\n\r\n\ @param\ genes\ The\ genes\ of\ a\ dna\ strand.\r\n\ @return\ The\ Length\ of\ longer\ gene.\r\n
+comment6.params=sr
+comment6.target=void\ printGenes(edu.duke.StorageResource)
+comment7.params=
+comment7.target=void\ testStorageFinder()
+numComments=8
