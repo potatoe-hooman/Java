@@ -1,0 +1,15 @@
+#BlueJ class context
+comment0.target=tester
+comment1.params=
+comment1.target=void\ testMostCommonCharIn()
+comment2.params=
+comment2.target=void\ testCaesarCipher()
+comment3.params=
+comment3.target=void\ testCaesarCracker()
+comment4.params=
+comment4.target=void\ testVigenereCipher()
+comment5.params=
+comment5.target=void\ testSliceString()
+comment6.params=
+comment6.target=void\ testTryKeyLength()
+numComments=7
