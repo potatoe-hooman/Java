@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.target=MinMagFilter
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ MinMaxFilter\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=min
+comment1.target=MinMagFilter(double)
+comment2.params=qe
+comment2.target=boolean\ satisfies(QuakeEntry)
+comment3.params=
+comment3.target=java.lang.String\ getName()
+numComments=4
